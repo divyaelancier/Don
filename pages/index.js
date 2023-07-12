@@ -30,50 +30,50 @@ const Root = (props) => {
     <>
       <CssBaseline />
       <MetaData title={`${configData?.business_name}`} />
-      {data && (
-        <LandingLayout configData={configData} landingPageData={data}>
-          <LandingPage configData={configData} landingPageData={data} />
-        </LandingLayout>
-      )}
+      {/* {data && ( */}
+      <LandingLayout configData={configData} landingPageData={data}>
+        <LandingPage configData={configData} landingPageData={data} />
+      </LandingLayout>
+      {/* )} */}
     </>
   );
 };
 export default Root;
 export const getServerSideProps = async (context) => {
-  const { req } = context;
-  const language = req.cookies.languageSetting;
-  const configRes = await fetch(
-    `${"https://6ammart-admin.6amtech.com"}/api/v1/config`,
-    {
-      method: "GET",
-      headers: {
-        "X-software-id": 33571750,
-        "X-server": "server",
-        "X-localization": language,
-        origin: process.env.NEXT_CLIENT_HOST_URL,
-      },
-    }
-  );
-  const config = await configRes.json();
-  const landingPageRes = await fetch(
-    `${"https://6ammart-admin.6amtech.com"}/api/v1/react-landing-page`,
-    {
-      method: "GET",
-      headers: {
-        "X-software-id": 33571750,
-        "X-server": "server",
-        "X-localization": language,
-        origin: process.env.NEXT_CLIENT_HOST_URL,
-      },
-    }
-  );
-  const landingPageData = await landingPageRes.json();
-  return {
-    props: {
-      configData: config,
-      landingPageData: landingPageData,
-    },
-  };
+  // const { req } = context;
+  // const language = req.cookies.languageSetting;
+  // const configRes = await fetch(
+  //   `${"https://6ammart-admin.6amtech.com"}/api/v1/config`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "X-software-id": 33571750,
+  //       "X-server": "server",
+  //       "X-localization": language,
+  //       origin: process.env.NEXT_CLIENT_HOST_URL,
+  //     },
+  //   }
+  // );
+  // const config = await configRes.json();
+  // const landingPageRes = await fetch(
+  //   `${"https://6ammart-admin.6amtech.com"}/api/v1/react-landing-page`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "X-software-id": 33571750,
+  //       "X-server": "server",
+  //       "X-localization": language,
+  //       origin: process.env.NEXT_CLIENT_HOST_URL,
+  //     },
+  //   }
+  // );
+  // const landingPageData = await landingPageRes.json();
+  // return {
+  //   props: {
+  //     configData: config,
+  //     landingPageData: landingPageData,
+  //   },
+  // };
 };
 
 //
